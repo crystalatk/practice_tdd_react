@@ -1,12 +1,18 @@
-import logo from "./logo.svg";
-import "./App.css";
+import NewMessageForm from "./components/NewMessageForm";
+import MessageList from "./components/MessageList";
+import { useState } from "react";
 
 function App() {
+  const [messages, setMessages] = useState([]);
+  const _handleSend = (newMessage) => {
+    setMessages([newMessage, ...messages]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>This is my Practice for TDD</h1>
-      </header>
+      <h1>This is the React TDD Practice</h1>
+      <NewMessageForm onSend={_handleSend} />
+      <MessageList messages={messages} />
     </div>
   );
 }
